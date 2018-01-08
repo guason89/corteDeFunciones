@@ -36,3 +36,6 @@ alertify.confirm('NECESITA CONFIRMACIÓN',"desea contunuar?",
         alertify.error('Acción cancelada');    
       }
     );
+
+************************************
+return response()->json(['status' => 200, 'message' => "Exito"]);
