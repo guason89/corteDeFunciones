@@ -1,0 +1,6 @@
+$("#fecha").datepicker({              
+      startDate: new Date(),
+      todayHighlight: true,
+      autoclose: true,
+      orientation: "bottom auto",
+});

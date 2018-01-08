@@ -1,0 +1,18 @@
+$.get("{{route('route.route')}}?param="+idparam, 
+      function(data) { 
+        if(data.status == 200){
+          var obj = data.data;
+          console.log(obj);
+          $('#idCampo').val(obj.Campo);
+                          
+         
+        }
+        else if (data.status == 400){
+          $("#frmid").reset();         
+          alertify.alert("Ocurrió un error al recuperar los datos");
+        }          
+  });
+
+****************************
+$objeto=Modelo::where()->first();
+  return response()->json(['status' => 200, 'data' => $objeto],200);  
