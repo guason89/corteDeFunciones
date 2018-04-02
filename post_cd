@@ -1,0 +1,37 @@
+vista
++++++++++++++++++++++
+$('#frmProfesional').submit(function(event) {
+		event.preventDefault();
+
+		$.post('<?php echo base_url(); ?>index.php/cat_profesionales_controller/editarProfesional/<?php echo $profesional[0]["idProfesional"]; ?>', $('#frmProfesional').serialize(), function(data, textStatus, xhr) {
+				obj = JSON.parse(data);
+				if(obj.code == 'ok')
+				{
+					console.log(obj.err_code);
+					alertify.alert(obj.msg,function(){
+						window.location.href = '<?php echo base_url();?>index.php/cat_profesionales_controller/vEditarProfesional/<?php echo $profesional[0]['idProfesional']; ?>';
+					});
+				}
+				else
+				{
+					err = JSON.parse(obj.err_code);
+					if(err.code == 1644)
+					{
+						alertify.alert(err.message);	
+					}
+					else
+					{
+						alertify.alert(obj.msg);						
+
+					}
+				}
+
+			});
+
+	});
+++++++++++++++++++++controlador++++++
+$_POST['direccionTrabajo']
+
+$response = array('code' => 'ok','msg' => 'Se ha guardado el registro exitosamente','err_code' => json_encode(array('code' => 'ok','message' => 'Registro Guardado exitosamente')));
+
+echo json_encode($response);
